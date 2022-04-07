@@ -1,0 +1,39 @@
+#######################################
+# Syntax Coloring Map
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+M_Display	KEYWORD1
+HM_Display	KEYWORD1
+VM_Display	KEYWORD1
+MD_config	KEYWORD1
+HMD_config	KEYWORD1
+VMD_config	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+clear	KEYWORD2
+print	KEYWORD2
+error	KEYWORD2
+scroll	KEYWORD2
+mode	KEYWORD2
+setLed	KEYWORD2
+setSeg	KEYWORD2
+setDisplay	KEYWORD2
+toggleLed	KEYWORD2
+toggleSeg	KEYWORD2
+
+TOTAL_DIGITS	KEYWORD2
+DISPLAY_RAM_SIZE	KEYWORD2
+
+######################################
+# Constants (LITERAL1)
+#######################################
+
+ON	LITERAL1
+OFF	LITERAL1
