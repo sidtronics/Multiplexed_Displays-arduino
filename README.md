@@ -7,7 +7,7 @@ display modules. This library is made to solve that problem. You need to provide
 Just put the files on a M_Displays directory under "arduino/libraries" on your arduino IDE instalation.
 
 # Usage 
-Create config file for your display module in display_configs directory. Examples of config files are provided along with templates for VM and HM display modules. Edit the config file for your display module accordingly.
+Create config file for your display module in src/display_configs directory. Examples of config files are provided along with templates for VM and HM display modules. Edit the config file for your display module accordingly.
 Now Include HM_Display.h if you have display which is multiplexed horizontally or include VM_Display.h if it is multiplexed vertically.
 Currently this project does not have documentation so refer source code for usage. 
 For more information contact me:- 
