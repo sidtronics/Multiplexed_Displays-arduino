@@ -1,7 +1,7 @@
 #include "VM_Display.h"
 
-VM_Display::VM_Display(const byte _stb, const byte _clk, const byte _data, struct VMD_config& VMD) :
-	M_Display(_stb, _clk, _data, &VMD),
+VM_Display::VM_Display(const byte _stb, const byte _clk, const byte _data, struct VMD_config& VMD, byte (*_getFont) (char)) :
+	M_Display(_stb, _clk, _data, &VMD, _getFont),
 	DIGIT_BITPOS(VMD.DIGIT_BITPOS),
 	SEG_ADDR(VMD.SEG_ADDR) {}
 
@@ -30,7 +30,7 @@ void VM_Display::sendString(String str)
 	for(int i = 0; i < TOTAL_DIGITS; i++)
 	{
 		for(int j = 0; j < 7; j++)
-			bitWrite(buffer[SEG_ADDR[i][j]], DIGIT_BITPOS[i], bitRead(FONT[str[i] - 0x20], j));
+			bitWrite(buffer[SEG_ADDR[i][j]], DIGIT_BITPOS[i], bitRead(FONT[str[i]], j));
 	}
 	update();
 }

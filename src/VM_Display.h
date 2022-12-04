@@ -7,7 +7,7 @@ class VM_Display : public M_Display
 {	
 public:
 //init
-VM_Display(const byte _stb, const byte _clk, const byte _data, struct VMD_config& VMD);
+VM_Display(const byte _stb, const byte _clk, const byte _data, struct VMD_config& VMD, byte (*_getFont) (char) = DefaultFont);
 
 void setSeg(bool isOn, byte seg, byte digit);
 void toggleSeg(byte seg, byte digit);

@@ -7,7 +7,7 @@ class HM_Display : public M_Display
 {
 public:
 //init
-HM_Display(const byte _stb, const byte _clk, const byte _data, struct HMD_config& HMD);
+HM_Display(const byte _stb, const byte _clk, const byte _data, struct HMD_config& HMD, byte (*_getFont) (char) = DefaultFont);
 
 void setSeg(bool isOn, byte seg, byte digit);
 void toggleSeg(byte seg, byte digit);

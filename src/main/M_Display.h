@@ -8,7 +8,10 @@
 	#include "WProgram.h"
 #endif
 
-#include "MD_Fonts.h"
+
+//#include "MD_Fonts.h"
+#include "../DisplayFont.h"
+#include "../fonts/Fonts.h"
 #include "MD_config_structs.h"
 
 //flags for turn on/off
@@ -34,7 +37,7 @@ class M_Display
 
   protected:
 
-	M_Display(const byte _stb, const byte _clk, const byte _data, struct MD_config* MD);
+	M_Display(const byte _stb, const byte _clk, const byte _data, struct MD_config* MD, byte (*_getFont) (char));
 
 	void sendCmd(byte cmd);
 	void sendData(byte addr, byte dat);
@@ -47,6 +50,8 @@ class M_Display
 	const byte*& LED_VAL;
 
 	byte*& buffer;
+
+  const DisplayFont FONT;
 
 	const byte stb;
 	const byte clk;

@@ -1,7 +1,7 @@
 #include "HM_Display.h"
 
-HM_Display::HM_Display(const byte _stb,const byte _clk,const byte _data, struct HMD_config& HMD) :
-	M_Display(_stb, _clk, _data, &HMD), 
+HM_Display::HM_Display(const byte _stb,const byte _clk,const byte _data, struct HMD_config& HMD, byte (*_getFont) (char)) :
+	M_Display(_stb, _clk, _data, &HMD, _getFont), 
 	DIGIT_ADDR(HMD.DIGIT_ADDR) {}
 
 void HM_Display::setSeg(bool isOn, byte seg, byte digit)
@@ -29,7 +29,7 @@ void HM_Display::sendString(String str)
 	for(int i = 0; i < TOTAL_DIGITS; i++)
 	{
 		for(int j = 0; j < 7; j++)
-			bitWrite(buffer[DIGIT_ADDR[i]], j, bitRead(FONT[str[i] - 0x20], j));
+			bitWrite(buffer[DIGIT_ADDR[i]], j, bitRead(FONT[str[i]], j));
 	}
 	update();
 }

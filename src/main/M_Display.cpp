@@ -1,15 +1,17 @@
 #include "M_Display.h"
 
 
-M_Display::M_Display(const byte _stb, const byte _clk, const byte _data, struct MD_config* MD) :
-	stb(_stb),
-	clk(_clk),
-	data(_data),
-	TOTAL_DIGITS(MD->TOTAL_DIGITS),
-	DISPLAY_RAM_SIZE(MD->DISPLAY_RAM_SIZE),
-	LED_ADDR(MD->LED_ADDR),
-	LED_VAL(MD->LED_VAL),
-	buffer(MD->buffer)
+M_Display::M_Display(const byte _stb, const byte _clk, const byte _data, struct MD_config* MD, byte (*_getFont) (char)) :
+	  stb(_stb),
+    clk(_clk),
+    data(_data),
+    TOTAL_DIGITS(MD->TOTAL_DIGITS),
+    DISPLAY_RAM_SIZE(MD->DISPLAY_RAM_SIZE),
+    LED_ADDR(MD->LED_ADDR),
+    LED_VAL(MD->LED_VAL),
+    buffer(MD->buffer),
+    FONT(_getFont)
+
 {
 	pinMode(stb, OUTPUT);
 	pinMode(clk, OUTPUT);
