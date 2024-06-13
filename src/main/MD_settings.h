@@ -1,0 +1,8 @@
+#ifndef MD_SETTINGS_H
+#define MD_SETTINGS_H
+
+#define MD_DISPLAY_RAM_SIZE 14
+
+#define MD_STRING_BUFFER_SIZE 25
+
+#endif

@@ -1,8 +1,8 @@
 #include "HM_Display.h"
 
-HM_Display::HM_Display(const byte _stb,const byte _clk,const byte _data, struct HMD_config& HMD, byte (*_getFont) (char)) :
-	M_Display(_stb, _clk, _data, &HMD, _getFont), 
-	DIGIT_ADDR(HMD.DIGIT_ADDR) {}
+HM_Display::HM_Display(const byte _stb,const byte _clk,const byte _data, const HMD_config& _config, byte (*_getFont) (char)) :
+	M_Display(_stb, _clk, _data, _config, _getFont),
+	DIGIT_ADDR(_config.DIGIT_ADDR) {}
 
 void HM_Display::setSeg(bool isOn, byte seg, byte digit)
 {

@@ -13,6 +13,7 @@
 #include "../DisplayFont.h"
 #include "../fonts/Fonts.h"
 #include "MD_config_structs.h"
+#include "settings.h"
 
 //flags for turn on/off
 #define ON true
@@ -37,21 +38,36 @@ class M_Display
 
   protected:
 
-	M_Display(const byte _stb, const byte _clk, const byte _data, struct MD_config* MD, byte (*_getFont) (char));
+	M_Display(
+
+            const byte _stb,
+            const byte _clk,
+            const byte _data,
+            const HMD_config& _config,
+            byte (*_getFont) (char)
+    );
+
+    M_Display(
+
+            const byte _stb,
+            const byte _clk,
+            const byte _data,
+            const VMD_config& _config,
+            byte (*_getFont) (char)
+    );
 
 	void sendCmd(byte cmd);
 	void sendData(byte addr, byte dat);
 	virtual void sendString(String str) = 0;
 	void update();
 
-	const byte& TOTAL_DIGITS;
-	const byte& DISPLAY_RAM_SIZE;
-	const byte*& LED_ADDR;
-	const byte*& LED_VAL;
+    byte buffer[MD_DISPLAY_RAM_SIZE];
 
-	byte*& buffer;
+	const byte TOTAL_DIGITS;
+	const byte* const& LED_ADDR;
+	const byte* const& LED_VAL;
 
-  const DisplayFont FONT;
+    const DisplayFont FONT;
 
 	const byte stb;
 	const byte clk;
