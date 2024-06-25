@@ -12,8 +12,8 @@
 //#include "MD_Fonts.h"
 #include "../DisplayFont.h"
 #include "../fonts/Fonts.h"
-#include "MD_config_structs.h"
-#include "settings.h"
+#include "MD_config.h"
+#include "MD_settings.h"
 
 //flags for turn on/off
 #define ON true
