@@ -1,7 +1,9 @@
 #include <Arduino.h> //for "byte"
 
 byte DefaultFont(char asciiChar) {
-    
+
+    asciiChar = (asciiChar >= 'a' && asciiChar <= 'z') ? asciiChar - 32 : asciiChar;
+
     switch(asciiChar) {
 
         case ' ' : return 0b00000000;
