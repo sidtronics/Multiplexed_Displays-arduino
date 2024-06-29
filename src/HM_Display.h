@@ -14,7 +14,8 @@ void toggleSeg(byte seg, byte digit);
 
 protected:
 
-void sendString(String str);
+//void sendString(String str);
+void writeDigit(byte digit, byte data) override;
 
 const byte*& DIGIT_ADDR;
 

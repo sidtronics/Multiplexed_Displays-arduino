@@ -24,6 +24,12 @@ void HM_Display::toggleSeg(byte seg, byte digit)
 	sendData(DIGIT_ADDR[digit], buffer[DIGIT_ADDR[digit]]);
 }
 
+void HM_Display::writeDigit(byte digit, byte data) {
+
+    buffer[DIGIT_ADDR[digit]] = (buffer[DIGIT_ADDR[digit]] & 0x80) | FONT[data];
+}
+
+/*
 void HM_Display::sendString(String str)
 {
 	for(int i = 0; i < TOTAL_DIGITS; i++)
@@ -33,3 +39,37 @@ void HM_Display::sendString(String str)
 	}
 	update();
 }
+
+size_t HM_Display::write(byte chr) {
+
+    if(cursor_pos == TOTAL_DIGITS) clear();
+
+    for(int j = 0; j < 7; j++) bitWrite(buffer[DIGIT_ADDR[cursor_pos]], j, bitRead(FONT[chr], j));
+    cursor_pos++;
+    update();
+
+    return 1;
+}
+
+size_t HM_Display::write(const byte *buf, size_t size) {
+
+    if(cursor_pos == TOTAL_DIGITS) clear();
+
+    size_t n = 0;
+    while(size--) {
+
+        buffer[DIGIT_ADDR[cursor_pos]] = FONT[*buf++];
+        cursor_pos++;
+        n++;
+
+        if(cursor_pos == TOTAL_DIGITS) {
+
+            update();
+            return n;
+        }
+    }
+
+    update();
+    return n;
+}
+*/

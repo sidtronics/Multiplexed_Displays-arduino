@@ -25,6 +25,13 @@ void VM_Display::toggleSeg(byte seg, byte digit)
 	sendData(SEG_ADDR[digit][seg], buffer[SEG_ADDR[digit][seg]]);
 }
 
+void VM_Display::writeDigit(byte digit, byte data) {
+
+    for(int i = 0; i < 7; i++) 
+        bitWrite(buffer[SEG_ADDR[digit][i]], DIGIT_BITPOS[digit], bitRead(FONT[data], i));
+}
+
+/*
 void VM_Display::sendString(String str)
 {
 	for(int i = 0; i < TOTAL_DIGITS; i++)
@@ -34,4 +41,4 @@ void VM_Display::sendString(String str)
 	}
 	update();
 }
-
+*/
