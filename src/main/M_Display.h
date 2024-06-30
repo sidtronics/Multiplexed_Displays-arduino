@@ -12,8 +12,9 @@
 //#include "MD_Fonts.h"
 #include "../DisplayFont.h"
 #include "../fonts/Fonts.h"
-#include "MD_config_structs.h"
-#define MD_STRING_BUFFER_SIZE 26
+#include "MD_config.h"
+#include "MD_settings.h"
+
 //flags for turn on/off
 #define ON true
 #define OFF false
@@ -43,7 +44,23 @@ class M_Display : public Print
 
   protected:
 
-	M_Display(const byte _stb, const byte _clk, const byte _data, struct MD_config* MD, byte (*_getFont) (char));
+	M_Display(
+
+            const byte _stb,
+            const byte _clk,
+            const byte _data,
+            const HMD_config& _config,
+            byte (*_getFont) (char)
+    );
+
+    M_Display(
+
+            const byte _stb,
+            const byte _clk,
+            const byte _data,
+            const VMD_config& _config,
+            byte (*_getFont) (char)
+    );
 
 	void sendCmd(byte cmd);
 	void sendData(byte addr, byte dat);
@@ -55,13 +72,13 @@ class M_Display : public Print
 
     virtual void writeDigit(byte digit, byte data) = 0;
 
-	const byte& TOTAL_DIGITS;
-	const byte& DISPLAY_RAM_SIZE;
-	const byte*& LED_ADDR;
-	const byte*& LED_VAL;
-
-	byte*& buffer;
+    byte buffer[MD_DISPLAY_RAM_SIZE] = {0};
     byte str_buffer[MD_STRING_BUFFER_SIZE] = {0};
+
+	const byte TOTAL_DIGITS;
+	const byte* const& LED_ADDR;
+	const byte* const& LED_VAL;
+
     byte cursor_pos = 0;
     byte frame_beg = 0;
 

@@ -1,9 +1,9 @@
 #include "VM_Display.h"
 
-VM_Display::VM_Display(const byte _stb, const byte _clk, const byte _data, struct VMD_config& VMD, byte (*_getFont) (char)) :
-	M_Display(_stb, _clk, _data, &VMD, _getFont),
-	DIGIT_BITPOS(VMD.DIGIT_BITPOS),
-	SEG_ADDR(VMD.SEG_ADDR) {}
+VM_Display::VM_Display(const byte _stb, const byte _clk, const byte _data, const VMD_config& _config, byte (*_getFont) (char)) :
+	M_Display(_stb, _clk, _data, _config, _getFont),
+	DIGIT_BITPOS(_config.DIGIT_BITPOS),
+	SEG_ADDR(_config.SEG_ADDR) {}
 
 void VM_Display::setSeg(bool isOn, byte seg, byte digit)
 {
